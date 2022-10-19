@@ -1,0 +1,1 @@
+Printing quotes based on simple numeric selection
