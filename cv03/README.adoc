@@ -1,0 +1,1 @@
+RGB value converter to hex triplet
