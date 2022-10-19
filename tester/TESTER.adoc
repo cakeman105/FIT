@@ -1,0 +1,2 @@
+Here lies my universal tester script for verifying program functionality.
+I am very proud of it.
