@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+//i am checking for a lot of stuff
 
 bool isPrime(int in); //this is hell
 
@@ -11,7 +12,7 @@ int main()
 	
 	while (1)
 	{
-		if (scanf ("%c %d %d", &sel, &startInterval, &endInterval) == 3 && startInterval <= endInterval && startInterval >= 1)
+		if (scanf (" %c %d %d", &sel, &startInterval, &endInterval) == 3 && startInterval <= endInterval && startInterval >= 1)
 		{		
 			if (sel != '?' && sel != '#')
 			{
@@ -34,20 +35,27 @@ int main()
 				
 				if (isPrime (sum) == true) //test whether sum is prime
 				{
-					printf("%d\n", i);
+					if (sel == '?')
+						printf("%d\n", i);
 					count++;
 				}
 				
 				sum = 0;
 			}
+			
+			printf("Celkem: %d\n", count);
+			count = 0;
 		}
 		
 		else if (getchar() == EOF) //check for eof
 			return EXIT_SUCCESS;
+			
+		else
+		{
+			printf("Nespravny vstup.\n");
+			return EXIT_FAILURE; 	
+		}
 	}
-	
-	printf("Nespravny vstup\n");
-	return EXIT_FAILURE; 	
 }
 
 bool isPrime(int in) //determines whether a number is prime, returns bool

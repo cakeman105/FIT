@@ -11,4 +11,5 @@ Intervaly:
 324
 325
 327
-Nespravny vstup.
+Celkem: 12
+Celkem: 12
