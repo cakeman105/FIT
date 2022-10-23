@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 //i am checking for a lot of stuff
 
 bool isPrime(int in); //this is hell
@@ -60,7 +61,7 @@ int main()
 
 bool isPrime(int in) //determines whether a number is prime, returns bool
 {
-	for (int i = 2; i < in; i++)
+	for (int i = 2; i <= sqrt (in); i++)
 	{
 		if (in % i == 0)
 			return false;
