@@ -3,7 +3,7 @@
 #include <math.h>
 //i am checking for a lot of stuff
 
-bool isPrime(int in); //this is hell
+bool isPrime(int in);
 
 int main()
 {
