@@ -4,7 +4,7 @@
 //i am checking for a lot of stuff
 
 bool isPrime(int in);
-
+int sumDivisors(int in);
 int main()
 {
 	int startInterval, endInterval, sum = 0, count = 0;
@@ -26,13 +26,7 @@ int main()
 				if (isPrime (i) == true) //exclude primes from testing
 					continue;
 					
-				for (int j = 1; j < i; j++) //sum proper divisors
-				{
-					if (i % j == 0)
-					{
-						sum += j;
-					}
-				}
+				sum = sumDivisors(i);
 				
 				if (isPrime (sum) == true) //test whether sum is prime
 				{
@@ -61,7 +55,9 @@ int main()
 
 bool isPrime(int in) //determines whether a number is prime, returns bool
 {
-	for (int i = 2; i <= sqrt (in); i++)
+	if (in == 1)
+		return true;
+	for (int i = 2; i <= sqrt (in); i++) //run to sqrt (in) to reduce time
 	{
 		if (in % i == 0)
 			return false;
@@ -69,3 +65,22 @@ bool isPrime(int in) //determines whether a number is prime, returns bool
 	
 	return true;
 }
+
+int sumDivisors(int in) //calculate the sum of all proper divisors of natural number
+{
+    int res = 0;
+    if(in == 1)
+      return res;
+    for (int i = 2; i <= sqrt (in); i++) //run to sqrt (in), ditto
+    {
+        if (in % i == 0)
+        {
+            if (i == ( in / i))
+                res += i;
+            else
+                res += (i + in / i);
+        }
+    }
+    return (res + 1);
+}
+
