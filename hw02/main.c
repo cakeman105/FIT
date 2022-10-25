@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-//i am checking for a lot of stuff
 
 bool isPrime(int in);
 int sumDivisors(int in);
@@ -11,7 +10,7 @@ int main()
 	char sel;
 	printf ("Intervaly:\n");
 	
-	while (1)
+	while (true)
 	{
 		if (scanf (" %c %d %d", &sel, &startInterval, &endInterval) == 3 && startInterval <= endInterval && startInterval >= 1)
 		{		
@@ -54,9 +53,10 @@ int main()
 }
 
 bool isPrime(int in) //determines whether a number is prime, returns bool
-{
-	if (in == 1)
+{					 //needs improvement
+	if (in == 1|| in == 0)
 		return true;
+		
 	for (int i = 2; i <= sqrt (in); i++) //run to sqrt (in) to reduce time
 	{
 		if (in % i == 0)
