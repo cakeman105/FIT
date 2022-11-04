@@ -61,7 +61,6 @@ int calculateAmount(char * arr)
   * @function sameArrays
   * @abstract compare two arrays, return 1 if same, 0 if not
   * @param[in] char * arr
-  * @param[in] char * arrRev
   */
   
 int sameArrays(char * arr, int am)
@@ -98,11 +97,11 @@ int nextPalindrome ( unsigned long long from,
 	char arr[length] = {};
 	unsigned long long testNum = from + 1;
 	
+	for (int i = 0; i < length; i++) //fill char array
+			arr[i] = '*';
+			
 	while (true)
 	{
-		for (int i = 0; i < length; i++) //fill char array
-			arr[i] = '*';
-	
 		convert(testNum, radix, arr); //convert long to base radix and save to char array
 		if (sameArrays(arr, calculateAmount(arr)) == 1)
 		{
