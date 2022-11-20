@@ -5,6 +5,7 @@
 #define NAME_LENGTH 199
 #define EQUATION2 sqrt( pow(arr[j + 1].coordX - arr[i].coordX, 2) + pow(arr[j + 1].coordY - arr[i].coordY, 2))
 
+//you can make this code run faster, im just lazy for the time being
 struct Plane
 {
 	char name[NAME_LENGTH];
@@ -24,7 +25,7 @@ bool isEqual(double a, double b)
 {
 	double epsilon = (double) (0.001f * (abs(a) + abs(b)));
 	
-	return fabsl(a - b) <= epsilon ? true : false;
+	return fabsl(a - b) <= epsilon;
 }
 
 /**
@@ -38,7 +39,7 @@ int input(Plane ** arr) //fix return on fail
 	Plane * tmp = *arr;
 	while (true)
 	{
-		if (scanf("%lf,%lf: %199s", &tmp[count].coordX, &tmp[count].coordY, tmp[count].name) != 3)
+		if (scanf(" %lf , %lf : %199s ", &tmp[count].coordX, &tmp[count].coordY, tmp[count].name) != 3)
 		{
 			if (feof(stdin))
 				break;
@@ -89,6 +90,14 @@ double findSmallest(Plane * arr, int count, int * pairs)
 	return min;
 }
 
+
+/**
+  * Finds the amount of pairs and prints to stdout
+  * @param[in] Plane * arr
+  * @param[in] int count
+  * @param[in] double min
+  */
+  
 void findPairs(Plane * arr, int count, double min)
 {
 	double dist = 0;
