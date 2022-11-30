@@ -1,5 +1,5 @@
 Pozice letadel:
 Vzdalenost nejblizsich letadel: 2.000000
-Nalezenych dvojic: 2
+Nalezenych dvojic: 1
 KLM - Qantas
 Lufthansa - AirFrance

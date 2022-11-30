@@ -1,4 +1,3 @@
 Pozice letadel:
-Vzdalenost nejblizsich letadel: 114220186.420635
-Nalezenych dvojic: 1
-xJecwM - dFSPSs
+Vzdalenost nejblizsich letadel: 0.000000
+Nalezenych dvojic: 0

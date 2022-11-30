@@ -5,7 +5,6 @@
 #define NAME_LENGTH 199
 #define EQUATION2 sqrt( pow(arr[j + 1].coordX - arr[i].coordX, 2) + pow(arr[j + 1].coordY - arr[i].coordY, 2))
 
-//you can make this code run faster, im just lazy for the time being
 struct Plane
 {
 	char name[NAME_LENGTH];
@@ -25,7 +24,7 @@ bool isEqual(double a, double b)
 {
 	double epsilon = (double) (0.001f * (abs(a) + abs(b)));
 	
-	return fabsl(a - b) <= epsilon;
+	return fabsl(a - b) <= epsilon ? true : false;
 }
 
 /**
@@ -39,7 +38,7 @@ int input(Plane ** arr) //fix return on fail
 	Plane * tmp = *arr;
 	while (true)
 	{
-		if (scanf(" %lf , %lf : %199s ", &tmp[count].coordX, &tmp[count].coordY, tmp[count].name) != 3)
+		if (scanf("%lf,%lf: %199s", &tmp[count].coordX, &tmp[count].coordY, tmp[count].name) != 3)
 		{
 			if (feof(stdin))
 				break;
@@ -63,41 +62,36 @@ int input(Plane ** arr) //fix return on fail
   * @param[in] int count
   */
     
-double findSmallest(Plane * arr, int count, int * pairs)
+double findSmallest(Plane * arr, int count, int * pairs, double ** results)
 {
 	double min = 0;
-	double dist = 0;
 	int tmp = 0;
+	int inx = 0;
+	double * tmpArr = *results;
 	for (int i = 0; i < count - 1; i++)
 		for (int j = i; j < count - 1; j++)
 		{
-			dist = EQUATION2;
+			tmpArr[i] = EQUATION2;
 			if (j == 0)
-				min = dist;
-			else if (dist < min)
-				min = dist;
+				min = tmpArr[i];
+			else if (tmpArr[i] < min)
+				min = tmpArr[i];
+			
+			inx++;
+			tmpArr = (double *) realloc(*results, (inx + 1) * sizeof(double));
+			*results = tmpArr;
 		}
 	
-	for (int i = 0; i < count - 1; i++)
-		for (int j = i; j < count - 1; j++)
-		{
-			dist = EQUATION2;
-			if (isEqual(dist, min))
-				tmp++;
-		}
-		
+	for (int i = 0; i < inx; i++)
+	{
+		if (isEqual(tmpArr[i], min))
+			tmp++;
+	}
 	*pairs = tmp;
+	tmpArr = NULL;
 	return min;
 }
 
-
-/**
-  * Finds the amount of pairs and prints to stdout
-  * @param[in] Plane * arr
-  * @param[in] int count
-  * @param[in] double min
-  */
-  
 void findPairs(Plane * arr, int count, double min)
 {
 	double dist = 0;
@@ -115,6 +109,7 @@ int main()
 {
 	printf("Pozice letadel:\n");
 	Plane * planes = (Plane *) malloc(1 * sizeof(Plane));
+	double * results = (double *) malloc(2 * sizeof(double));
 	int count = input(&planes);
 	
 	if (count == -1 || count == 1)
@@ -124,7 +119,7 @@ int main()
 	}
 	
 	int pairs = 0;
-	double min = findSmallest(planes, count, &pairs);
+	double min = findSmallest(planes, count, &pairs, &results);
 	printf("Vzdalenost nejblizsich letadel: %lf\n", min);
 	printf("Nalezenych dvojic: %d\n", pairs);
 	findPairs(planes, count, min);

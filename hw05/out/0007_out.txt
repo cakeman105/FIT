@@ -1,4 +1,4 @@
 Pozice letadel:
 Vzdalenost nejblizsich letadel: 24315294.750572
-Nalezenych dvojic: 1
+Nalezenych dvojic: 0
 gctPLo - qKtlCY

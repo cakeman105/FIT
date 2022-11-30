@@ -1,6 +1,6 @@
 Pozice letadel:
 Vzdalenost nejblizsich letadel: 0.000000
-Nalezenych dvojic: 6
+Nalezenych dvojic: 5
 A - B
 A - C
 A - D

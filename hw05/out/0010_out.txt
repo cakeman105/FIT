@@ -1,6 +1,6 @@
 Pozice letadel:
 Vzdalenost nejblizsich letadel: 0.000000
-Nalezenych dvojic: 4
+Nalezenych dvojic: 2
 KLM - Wizz
 KLM - LOT
 Wizz - CSA
