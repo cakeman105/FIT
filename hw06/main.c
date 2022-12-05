@@ -78,14 +78,11 @@ int findInstances(Instances ** arr, char * text, const char * (*replace)[2])
 		char * ptr = strstr(text, replace[i][0]);
 		while (ptr)
 		{
-			if (text[ptr - text])
-			{
-				tmp[amount].word = i;
-				tmp[amount].index = ptr - text; //pointer arithmetic
-				tmp = (Instances *) realloc(*arr, (amount + 2) * sizeof(Instances));
-				amount++;
-				*arr = tmp;
-			}
+			tmp[amount].word = i;
+			tmp[amount].index = ptr - text; //pointer arithmetic
+			tmp = (Instances *) realloc(*arr, (amount + 2) * sizeof(Instances));
+			amount++;
+			*arr = tmp;
 			ptr = strstr(ptr + 1, replace[i][0]);
 		}
 		
@@ -101,6 +98,7 @@ int findInstances(Instances ** arr, char * text, const char * (*replace)[2])
   * @param[in] char * text
   * @param[in] Instances ** arr
   * @param[in] const char * (*replace)[2]
+  * @return int newLength
   */
   
 int calculatePost(char * text, Instances ** arr, const char * (*replace)[2], int size)
@@ -212,7 +210,7 @@ int main ( int argc, char * argv [] )
     { "fail", "suboptimal result" },
     { NULL, NULL }
   };
-  /*
+  
   const char * tbl [][2] =
   {
     { "son", "offspring with both X and Y chromosomes" },
@@ -223,7 +221,7 @@ int main ( int argc, char * argv [] )
   res = newSpeak("son of a prisoner", tbl);
   assert (!strcmp(res, "offspring with both X and Y chromosomes of a client of the correctional system"));
   free(res);
-*/
+
   res = newSpeak ( "Hello.", d2 );
   assert ( ! res );
   
